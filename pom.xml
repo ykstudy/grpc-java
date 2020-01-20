@@ -11,13 +11,6 @@
 	<name>grpc-java</name>
 	<url>https://github.com/ykstudy/grpc-java</url>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.2.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
-	</parent>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<grpc.version>1.26.0</grpc.version><!-- CURRENT_GRPC_VERSION -->
@@ -29,106 +22,70 @@
 	</properties>
 
 	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>io.grpc</groupId>
-				<artifactId>grpc-bom</artifactId>
-				<version>${grpc.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
+	    <dependencies>
+	      <dependency>
+	        <groupId>io.grpc</groupId>
+	        <artifactId>grpc-bom</artifactId>
+	        <version>${grpc.version}</version>
+	        <type>pom</type>
+	        <scope>import</scope>
+	      </dependency>
+	    </dependencies>
 	</dependencyManagement>
-
+  
 	<dependencies>
 		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-		<!-- logback + slf4j -->
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-        </dependency>
-
-        <!-- 测试模块，包括JUnit、Hamcrest、Mockito -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.62</version>
-        </dependency>
-        
-        <!-- protobuf-java -->
-		<!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
-		<dependency>
-		    <groupId>com.google.protobuf</groupId>
-		    <artifactId>protobuf-java</artifactId>
-		    <version>3.11.1</version>
-		</dependency>
-		
-        <!-- grpc -->
-		<dependency>
-			<groupId>io.grpc</groupId>
-			<artifactId>grpc-netty-shaded</artifactId>
-			<scope>runtime</scope>
+		  <groupId>net.devh</groupId>
+		  <artifactId>grpc-server-spring-boot-starter</artifactId>
+		  <version>2.6.2.RELEASE</version>
 		</dependency>
 		<dependency>
-			<groupId>io.grpc</groupId>
-			<artifactId>grpc-protobuf</artifactId>
-		</dependency>
+	      <groupId>io.grpc</groupId>
+	      <artifactId>grpc-netty-shaded</artifactId>
+	      <scope>runtime</scope>
+	    </dependency>
+	    <dependency>
+	      <groupId>io.grpc</groupId>
+	      <artifactId>grpc-protobuf</artifactId>
+	    </dependency>
+	    <dependency>
+	      <groupId>io.grpc</groupId>
+	      <artifactId>grpc-stub</artifactId>
+	    </dependency>
+	    <dependency>
+	      <groupId>javax.annotation</groupId>
+	      <artifactId>javax.annotation-api</artifactId>
+	      <version>1.2</version>
+	      <scope>provided</scope> <!-- not needed at runtime -->
+	    </dependency>
+	    <dependency>
+	      <groupId>io.grpc</groupId>
+	      <artifactId>grpc-testing</artifactId>
+	      <scope>test</scope>
+	    </dependency>
+	    <dependency>
+	      <groupId>com.google.protobuf</groupId>
+	      <artifactId>protobuf-java-util</artifactId>
+	      <version>${protobuf.version}</version>
+	    </dependency>
 		<dependency>
-			<groupId>io.grpc</groupId>
-			<artifactId>grpc-stub</artifactId>
-		</dependency>
+	      <groupId>com.google.errorprone</groupId>
+	      <artifactId>error_prone_annotations</artifactId>
+	      <version>2.3.3</version> <!-- prefer to use 2.3.3 or later -->
+	    </dependency>
 		<dependency>
-			<groupId>javax.annotation</groupId>
-			<artifactId>javax.annotation-api</artifactId>
-			<scope>provided</scope> <!-- not needed at runtime -->
-		</dependency>
-		<dependency>
-			<groupId>io.grpc</groupId>
-			<artifactId>grpc-testing</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.protobuf</groupId>
-			<artifactId>protobuf-java-util</artifactId>
-			<version>${protobuf.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.errorprone</groupId>
-			<artifactId>error_prone_annotations</artifactId>
-			<version>2.3.3</version> <!-- prefer to use 2.3.3 or later -->
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<scope>test</scope>
-		</dependency>
+	      <groupId>junit</groupId>
+	      <artifactId>junit</artifactId>
+	      <version>4.12</version>
+	      <scope>test</scope>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.mockito</groupId>
+	      <artifactId>mockito-core</artifactId>
+	      <version>2.28.2</version>
+	      <scope>test</scope>
+	    </dependency>
 	</dependencies>
-
 	<build>
 		<extensions>
 			<extension>
@@ -139,18 +96,13 @@
 		</extensions>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<!-- 根据proto文件生成GreeterGrpc -->
-			<plugin>
 				<groupId>org.xolstice.maven.plugins</groupId>
 				<artifactId>protobuf-maven-plugin</artifactId>
 				<version>0.6.1</version>
 				<configuration>
-					<protocArtifact>com.google.protobuf:protoc:${protoc.version}:exe:${os.detected.classifier}</protocArtifact>
+					<protocArtifact>com.google.protobuf:protoc:3.11.0:exe:${os.detected.classifier}</protocArtifact>
 					<pluginId>grpc-java</pluginId>
-					<pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}</pluginArtifact>
+					<pluginArtifact>io.grpc:protoc-gen-grpc-java:1.26.0:exe:${os.detected.classifier}</pluginArtifact>
 				</configuration>
 				<executions>
 					<execution>
@@ -158,23 +110,6 @@
 							<goal>compile</goal>
 							<goal>compile-custom</goal>
 						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-enforcer-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>enforce</id>
-						<goals>
-							<goal>enforce</goal>
-						</goals>
-						<configuration>
-							<rules>
-								<requireUpperBoundDeps />
-							</rules>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
